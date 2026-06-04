@@ -17,7 +17,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# ─── Models ──────────────────────────────────────────────────────
+
 
 class TaskCreate(BaseModel):
     """Schema for creating a new task."""
@@ -42,7 +42,7 @@ class Task(BaseModel):
     created_at: str
     updated_at: Optional[str]
 
-# ─── In-memory storage ───────────────────────────────────────────
+
 
 tasks: dict[int, dict] = {}
 next_id = 1
@@ -50,7 +50,7 @@ next_id = 1
 def priority_label(p: int) -> str:
     return {1: "Low", 2: "Medium", 3: "High"}.get(p, "Unknown")
 
-# ─── Routes ──────────────────────────────────────────────────────
+
 
 @app.get("/", tags=["Root"])
 def root():
